@@ -1,0 +1,29 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+blas
+ca-certificates
+certifi
+chardet
+cudatoolkit=9.2=0
+lerc
+mkl
+ncurses
+networkx
+nibabel
+numpy
+opencv
+pillow
+pip
+python=3.7
+pytorch=1.7.0
+scikit-image
+scipy
+six
+sqlite
+tk
+torchvision
+traitlets
+xz
+zipp
+zlib
+zstd
