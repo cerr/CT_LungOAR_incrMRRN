@@ -28,7 +28,8 @@ python run_inference_nii.py <input_nii_directory> <output_nii_directory>
 A Jupyter [notebook](https://github.com/cerr/pyCERR-Notebooks/blob/main/autosegment_CT_Lung_OARs.ipynb) demonstrating how to run the model and visualize auto-segmented structures is provided.
   
 ## Citing this work
-Um, H., Jiang, J., Thor, M., Rimner, A., Luo, L., Deasy, J. O., & Veeraraghavan, H. (2020). Multiple resolution residual network for automatic thoracic organs-at-risk segmentation from CT. *arXiv preprint arXiv:2005.13690*. https://doi.org/10.48550/arXiv.2005.13690
+You may publish material involving results produced using this software provided that you reference the following
+* Um, H., Jiang, J., Thor, M., Rimner, A., Luo, L., Deasy, J. O., & Veeraraghavan, H. (2020). Multiple resolution residual network for automatic thoracic organs-at-risk segmentation from CT. *arXiv preprint arXiv:2005.13690*. https://doi.org/10.48550/arXiv.2005.13690
   
 ## License
 By downloading the software you are agreeing to the following terms and conditions as well as to the Terms of Use of CERR software.
