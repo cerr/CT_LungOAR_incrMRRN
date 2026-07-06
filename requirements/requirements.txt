@@ -1,31 +1,15 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
-blas
-ca-certificates
-certifi
-chardet
-cudatoolkit=9.2=0
-lerc
-mkl
-ncurses
-networkx
-nibabel
 numpy
-opencv
 pillow
 pip
-python=3.7
-torch==1.7.0+cu92
-torchvision==0.8.0+cu92
 scikit-image
 scipy
-SimpleITK
+SimpleITK==2.4.1
 six
-sqlite
 tk
-torchvision
+torch==1.12.0+cu102
+torchvision==0.13.0+cu102
 traitlets
-xz
 zipp
-zlib
 zstd

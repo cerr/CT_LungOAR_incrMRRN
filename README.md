@@ -16,14 +16,14 @@ Segmented structures:
 Dependencies specified in `requirements.txt` may be installed as follows:  
   
 ````
-conda create -y --name CT_LungOAR_incrMRRN python=3.5
+conda create -y --name CT_LungOAR_incrMRRN python=3.7
 conda activate CT_LungOAR_incrMRRN
 pip install -r requirements.txt  
 ````
   
 ## Applying the model  
 ```  
-python run_inference_nii.py <input_nii_directory> <output_nii_directory>  
+python run_inference_lung_oars.py <input_nii_directory> <output_nii_directory>  
 ```
 A Jupyter [notebook](https://github.com/cerr/pyCERR-Notebooks/blob/main/autosegment_CT_Lung_OARs.ipynb) demonstrating how to run the model and visualize auto-segmented structures is provided.
   
