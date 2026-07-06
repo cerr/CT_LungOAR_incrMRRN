@@ -1,0 +1,30 @@
+metadata:
+    model_name: "CT_LungOAR_incrMRRN"
+    version: "1.0.0"
+
+preprocessing:
+    script: "CT_LungOAR_incrMRRN.py"
+
+postprocessing:
+    script: "CT_LungOAR_incrMRRN.py"
+
+outputs:
+    "*_AI_seg.nii.gz":
+        1: "Lung_Left"
+        2: "Lung_Right"
+        3: "Heart"
+        4: "Esophagus"
+        5: "Cord"
+        6: "PBT"
+
+execution:
+    single:
+        description: "Run CT Lung OAR incremental MRRN inference on a single scan."
+        entrypoint: "run_inference_nii.py"
+        arguments:
+            - name: "session_input"
+              type: "positional"
+              required: true
+            - name: "session_output"
+              type: "positional"
+              required: true
