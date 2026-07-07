@@ -16,7 +16,7 @@ Segmented structures:
 Dependencies specified in `requirements.txt` may be installed as follows:  
   
 ````
-conda create -y --name CT_LungOAR_incrMRRN python=3.7
+conda create -y --name CT_LungOAR_incrMRRN python=3.8
 conda activate CT_LungOAR_incrMRRN
 pip install -r requirements.txt  
 ````

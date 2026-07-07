@@ -1,5 +1,5 @@
 import sys
-from run_inference_nii import main
+from model_wrapper import run_inference_nii
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2])
+    run_inference_nii.main(sys.argv[1], sys.argv[2])

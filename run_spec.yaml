@@ -20,7 +20,7 @@ outputs:
 execution:
     single:
         description: "Run CT Lung OAR incremental MRRN inference on a single scan."
-        entrypoint: "run_inference_nii.py"
+        entrypoint: "run_inference_lung_oars.py"
         arguments:
             - name: "session_input"
               type: "positional"

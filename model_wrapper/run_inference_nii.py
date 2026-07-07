@@ -10,11 +10,25 @@ import torch
 import torch.nn.functional as F
 
 # Local module with network weights, must be in cwd or on PYTHONPATH
-from incre_MRRN import get_Incre_MRRN_Pytorch,normalize_data
+from model_wrapper.incre_MRRN import get_Incre_MRRN_Pytorch,normalize_data
 
 
+def get_safe_device():
+    if not torch.cuda.is_available():
+        return torch.device("cpu")
+    
+    device = torch.device("cuda:0")
+    try:
+        torch.zeros(1, device=device) + 1
+        return device
+    except RuntimeError as e:
+        if "no kernel image is available" in str(e):
+            print("⚠️ CUDA architecture mismatch! Falling back to CPU...")
+            return torch.device("cpu")
+        raise e  
 
-def main(inputNiiPath, outputNiiPath, weightsPath):
+
+def run_seg(inputNiiPath, outputNiiPath, modelWeightsPath):
 
     num_labels = 6
     print(modelWeightsPath)
@@ -60,7 +74,8 @@ def main(inputNiiPath, outputNiiPath, weightsPath):
     ### Begin processing
     logger.info('Starting inference...')
 
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    
+    device = get_safe_device()
 
     with torch.no_grad():
         for i in range(0,num_slices):
@@ -98,9 +113,8 @@ def main(inputNiiPath, outputNiiPath, weightsPath):
         logger.error('Unable to save Nii file output.')
 
 
-if __name__ == '__main__':
-    print(sys.argv)
-    num_args = len(sys.argv)
+def main(*argv):
+    num_args = len(argv)
     if num_args == 1: # container
         softwarePath = '/software'
         dataPath = '/scratch'
@@ -108,12 +122,16 @@ if __name__ == '__main__':
         outputNiiPath = '/scratch/outputNii/'
         modelWeightsPath = '/software/model/seg_best_net_Seg_A.pth'
     else:
-        inputNiiPath = sys.argv[1]
-        outputNiiPath = sys.argv[2]
+        inputNiiPath = argv[0]
+        outputNiiPath = argv[1]
         dataPath = os.path.join(inputNiiPath, os.pardir)
         scriptDir = os.path.dirname(os.path.abspath(__file__))
         wrapperDir = os.path.join(scriptDir, os.pardir)
         modelDir = os.path.join(wrapperDir, "model")
         modelWeightsPath = os.path.join(modelDir, 'seg_best_net_Seg_A.pth')
-    
-    main(inputNiiPath, outputNiiPath, modelWeightsPath)
+    run_seg(inputNiiPath, outputNiiPath, modelWeightsPath)
+
+
+if __name__ == '__main__':
+    print(sys.argv)
+    main(sys.argv[1:])
